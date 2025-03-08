@@ -24,4 +24,7 @@ flutter:
 
   assets:
     - assets/images/PFT.jpg
+    - assets/images/floor_1_pft.jpg
+    - assets/images/floor_2_pft.jpg
+    - assets/images/floor_3_pft.jpg
     
