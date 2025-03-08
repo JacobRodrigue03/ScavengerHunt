@@ -1,15 +1,19 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HuntService {
+  static const List<String> allLocations = [
+    '1st Story - Panera',
+    '1st Story - Auditorium',
+    '2nd Story - Student Gathering Space',
+    '2nd Story - Robots',
+    '3rd Story - School of EE and CS',
+    '3rd Story - Bayport Technical Center',
+  ];
+
   Future<Map<String, bool>> loadProgress() async {
     final prefs = await SharedPreferences.getInstance();
     return {
-      'Level 1 - Location 1': prefs.getBool('Level 1 - Location 1') ?? false,
-      'Level 1 - Location 2': prefs.getBool('Level 1 - Location 2') ?? false,
-      'Level 2 - Location 1': prefs.getBool('Level 2 - Location 1') ?? false,
-      'Level 2 - Location 2': prefs.getBool('Level 2 - Location 2') ?? false,
-      'Level 3 - Location 1': prefs.getBool('Level 3 - Location 1') ?? false,
-      'Level 3 - Location 2': prefs.getBool('Level 3 - Location 2') ?? false,
+      for (final location in allLocations) location: prefs.getBool(location) ?? false,
     };
   }
 
