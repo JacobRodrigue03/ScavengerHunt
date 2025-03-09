@@ -10,28 +10,35 @@ class LevelPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Level $level')),
-      body: Column(
-        children: [
-          Text('Explore Level $level', style: const TextStyle(fontSize: 24)),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => LocationPage(level: level, locationNumber: 1)),
-              );
-            },
-            child: const Text('Location 1'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (_) => LocationPage(level: level, locationNumber: 2)),
-              );
-            },
-            child: const Text('Location 2'),
-          ),
-        ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Explore Level $level', style: const TextStyle(fontSize: 24)),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (_) =>
+                          LocationPage(level: level, locationNumber: 1)),
+                );
+              },
+              child: const Text('Location 1'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (_) =>
+                          LocationPage(level: level, locationNumber: 2)),
+                );
+              },
+              child: const Text('Location 2'),
+            ),
+          ],
+        ),
       ),
     );
   }
