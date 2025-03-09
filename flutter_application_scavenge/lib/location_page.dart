@@ -114,7 +114,7 @@ class _LocationPageState extends State<LocationPage> {
               On the third floor, I do reside,
               Where innovation and engineering collide.
 
-              A plaque stands before me, with digits in line,
+              A plaque stands before me, with the name Bayport in line,
               The last four of the phone number, a clue to define.
               Can you guess what these numbers might be,
               To unlock the answer and set you free?
