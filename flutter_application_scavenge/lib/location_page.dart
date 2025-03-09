@@ -44,23 +44,23 @@ class _LocationPageState extends State<LocationPage> {
       [
         "1st Story - Panera",
         """At Panera, where you love to stay, 
-            The sign in front calls out my name. 
-            Steamed milk swirls in coffee’s embrace, 
-            A creamy sip, a warm embrace. 
+              The sign in front calls out my name. 
+              Steamed milk swirls in coffee’s embrace, 
+              A creamy sip, a warm embrace. 
         
-            What drink am I? ☕""",
+              What drink am I? ☕""",
         "Latte"
       ],
       [
         "1st Story - Auditorium",
         """By glass doors in the hallway near,
-            Behind Capstone stairs, it becomes clear.
-            A purple sign beholds my name,
-            So all who see it may proclaim.
-            That to the creation of building I donated with pride,
-            My name is known in timber, far and wide.
+              Behind Capstone stairs, it becomes clear.
+              A purple sign beholds my name,
+              So all who see it may proclaim.
+              That to the creation of building I donated with pride,
+              My name is known in timber, far and wide.
       
-            What Company I? 🌲""",
+              What Company I? 🌲""",
         "RoyOMartin"
       ],
     ],
@@ -68,28 +68,28 @@ class _LocationPageState extends State<LocationPage> {
       [
         "2nd Story - Student Gathering Space",
         """On the second floor with a staircase in rear
-            all students in need may cometh here.
-            I contain chairs and tables and sofas galore.
-            Behind me is a glass wall where you can see much more.
+              all students in need may cometh here.
+              I contain chairs and tables and sofas galore.
+              Behind me is a glass wall where you can see much more.
 
-            My donator's name is on a plaque in front.
-            He goes by a nickname which may seem quite blunt.
+              My donator's name is on a plaque in front.
+              He goes by a nickname which may seem quite blunt.
 
-            What is the nickname of the person who donated to me?
+              What is the nickname of the person who donated to me?
     """,
         "Bill",
       ],
       [
         "2nd Story - Robots",
         """Behind a glass wall, where robots reside,
-            On the second floor, with others by his side.
-            With a yellow name, shining bright,
-            A ramp in front, ready to fight.
+              On the second floor, with others by his side.
+              With a yellow name, shining bright,
+              A ramp in front, ready to fight.
 
-            Who is this robot, standing so near?
-            His name is known to all who come here.
+              Who is this robot, standing so near?
+              His name is known to all who come here.
 
-            What am I? 🤖""",
+              What am I? 🤖""",
         "Toby",
       ]
     ],
@@ -97,14 +97,14 @@ class _LocationPageState extends State<LocationPage> {
       [
         "3rd Story - School of EE and CS",
         """On the third floor, where knowledge is king,
-            A glass front office, many students it brings.
-            Home to engineers and coders alike,
-            Behind these walls, innovations strike.
+              A glass front office, many students it brings.
+              Home to engineers and coders alike,
+              Behind these walls, innovations strike.
 
-            The room's name, where brilliance does reside,
-            Is the School of Electrical Engineering and Computer Science Office, where minds collide.
+              The room's name, where brilliance does reside,
+              Is the School of Electrical Engineering and Computer Science Office, where minds collide.
 
-            What is my room number?""",
+              What is my room number?""",
         "3325",
       ],
       [
@@ -219,25 +219,26 @@ class _LocationPageState extends State<LocationPage> {
       appBar: AppBar(title: Text(_locationKey)),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("""Enter the keyword for this riddle: $_locationKey:\n
-            $_thisRiddle""", style: const TextStyle(fontSize: 18)),
-            const SizedBox(height: 8),
-            TextField(
-              controller: _controller,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                hintText: 'button text',
+        child: Center(
+          child: Column(
+            children: [
+              Text("""Enter the keyword for this riddle: $_locationKey:\n
+              $_thisRiddle""", style: const TextStyle(fontSize: 18)),
+              const SizedBox(height: 8),
+              TextField(
+                controller: _controller,
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                  hintText: 'button text',
+                ),
               ),
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: _checkKeyword,
-              child: const Text('Submit'),
-            ),
-          ],
+              const SizedBox(height: 16),
+              ElevatedButton(
+                onPressed: _checkKeyword,
+                child: const Text('Submit'),
+              ),
+            ],
+          ),
         ),
       ),
     );
