@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'hunt_service.dart';
 import 'level_page.dart';
+import 'maps_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -59,8 +60,10 @@ class _HomePageState extends State<HomePage> {
               final completed = progress[location] ?? false;
               return Row(
                 children: [
-                  Icon(completed ? Icons.check_circle : Icons.radio_button_unchecked,
-                      color: completed ? Colors.green : Colors.grey),
+                  Icon(
+                    completed ? Icons.check_circle : Icons.radio_button_unchecked,
+                    color: completed ? Colors.green : Colors.grey,
+                  ),
                   const SizedBox(width: 8),
                   Text(location, style: const TextStyle(fontSize: 16)),
                 ],
@@ -68,6 +71,28 @@ class _HomePageState extends State<HomePage> {
             }).toList(),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildMapsButton() {
+    return Card(
+      elevation: 5,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      color: Colors.blueAccent,
+      child: ListTile(
+        leading: const Icon(Icons.map, size: 36, color: Colors.white),
+        title: const Text(
+          'View Building Maps',
+          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+        ),
+        trailing: const Icon(Icons.arrow_forward_ios, color: Colors.white),
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const MapsPage()),
+          );
+        },
       ),
     );
   }
@@ -97,45 +122,58 @@ class _HomePageState extends State<HomePage> {
 
               final progress = snapshot.data!;
 
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(16),
-                    decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.85), // Slight background for readability
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Row(
-                      children: [
-                        const Icon(Icons.explore, size: 40, color: Colors.blueAccent),
-                        const SizedBox(width: 12),
-                        Expanded(
-                          child: Text(
-                            'Welcome to the Scavenger Hunt!\nExplore each level and find hidden locations.',
-                            style: TextStyle(fontSize: 16, color: Colors.blueGrey[800]),
+              return SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(16),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.85),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Row(
+                        children: [
+                          const Icon(Icons.explore, size: 40, color: Colors.blueAccent),
+                          const SizedBox(width: 12),
+                          Expanded(
+                            child: Text(
+                              'Welcome to the Scavenger Hunt!\nExplore each level and find hidden locations.',
+                              style: TextStyle(fontSize: 16, color: Colors.blueGrey[800]),
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
 
-                  const SizedBox(height: 20),
+                    const SizedBox(height: 20),
 
-                  const Text(
-                    'Explore a Level',
-                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
-                  ),
-                  const SizedBox(height: 8),
+                    const Text(
+                      'Explore a Level',
+                      style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
+                    ),
+                    const SizedBox(height: 8),
 
-                  _buildLevelCard('1', Icons.looks_one),
-                  _buildLevelCard('2', Icons.looks_two),
-                  _buildLevelCard('3', Icons.looks_3),
+                    _buildLevelCard('1', Icons.looks_one),
+                    _buildLevelCard('2', Icons.looks_two),
+                    _buildLevelCard('3', Icons.looks_3),
 
-                  const SizedBox(height: 20),
+                    const SizedBox(height: 20),
 
-                  _buildProgressSection(progress),
-                ],
+                    const Text(
+                      'Other Resources',
+                      style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
+                    ),
+                    const SizedBox(height: 8),
+
+                    /// ✅ This is the new "View Maps" button
+                    _buildMapsButton(),
+
+                    const SizedBox(height: 20),
+
+                    _buildProgressSection(progress),
+                  ],
+                ),
               );
             },
           ),
