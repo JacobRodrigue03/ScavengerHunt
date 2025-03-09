@@ -15,8 +15,21 @@ class LocationPage extends StatefulWidget {
 class _LocationPageState extends State<LocationPage> {
   final _controller = TextEditingController();
   final HuntService _huntService = HuntService();
+  late Future<Map<String, bool>> _progress;
 
-  // This map links the numeric locationNumber to actual named locations for each level.
+  @override
+  void initState() {
+    super.initState();
+    _progress = _huntService.loadProgress();
+    _initializeButtonText(); // Initialize the button text when the page is loaded
+  }
+
+  void _refreshProgress() {
+    setState(() {
+      _progress = _huntService.loadProgress();
+    });
+  }
+
   final Map<String, List<String>> _locations = {
     '1': ['1st Story - Panera', '1st Story - Auditorium'],
     '2': ['2nd Story - Student Gathering Space', '2nd Story - Robots'],
@@ -145,6 +158,36 @@ class _LocationPageState extends State<LocationPage> {
     return 'Riddle not found!';
   }
 
+  Future<String> _getButtonText() async {
+    String text = "Enter Keyword";
+    String location = "";
+
+    // Fetch the riddle data for the current location
+    final riddleData = _riddles[widget.level]?[widget.locationNumber - 1];
+
+    if (riddleData != null && riddleData.length > 2) {
+      location = riddleData[0]; // Extract location from the riddle data
+    }
+
+    // Load progress data asynchronously
+    final progress = await _huntService.loadProgress();
+
+    // Check if the location has been visited (true)
+    if (progress[location] == true) {
+      text = "Location Already Visited"; // Change text if location is visited
+    }
+
+    return text;
+  }
+
+  // Initialize the button text and update the controller
+  void _initializeButtonText() async {
+    String buttonText = await _getButtonText();
+    setState(() {
+      _controller.text = buttonText; // Update the controller text
+    });
+  }
+
   void _checkKeyword() async {
     final enteredKeyword = _controller.text.trim().toLowerCase();
     final correctKeyword = _correctKeywords[_locationKey]?.toLowerCase();
@@ -186,7 +229,7 @@ class _LocationPageState extends State<LocationPage> {
               controller: _controller,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(),
-                hintText: 'Enter keyword',
+                hintText: 'button text',
               ),
             ),
             const SizedBox(height: 16),

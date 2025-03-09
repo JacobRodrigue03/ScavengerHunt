@@ -13,7 +13,8 @@ class HuntService {
   Future<Map<String, bool>> loadProgress() async {
     final prefs = await SharedPreferences.getInstance();
     return {
-      for (final location in allLocations) location: prefs.getBool(location) ?? false,
+      for (final location in allLocations)
+        location: prefs.getBool(location) ?? false,
     };
   }
 

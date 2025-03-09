@@ -32,7 +32,8 @@ class _HomePageState extends State<HomePage> {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       child: ListTile(
         leading: Icon(icon, size: 36, color: Colors.blueAccent),
-        title: Text('Explore Level $level', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+        title: Text('Explore Level $level',
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
         trailing: const Icon(Icons.arrow_forward_ios),
         onTap: () {
           Navigator.push(
@@ -54,14 +55,17 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Your Progress', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            const Text('Your Progress',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             const SizedBox(height: 8),
             ...progress.keys.map((location) {
               final completed = progress[location] ?? false;
               return Row(
                 children: [
                   Icon(
-                    completed ? Icons.check_circle : Icons.radio_button_unchecked,
+                    completed
+                        ? Icons.check_circle
+                        : Icons.radio_button_unchecked,
                     color: completed ? Colors.green : Colors.grey,
                   ),
                   const SizedBox(width: 8),
@@ -84,7 +88,8 @@ class _HomePageState extends State<HomePage> {
         leading: const Icon(Icons.map, size: 36, color: Colors.white),
         title: const Text(
           'View Building Maps',
-          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
+          style: TextStyle(
+              fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
         ),
         trailing: const Icon(Icons.arrow_forward_ios, color: Colors.white),
         onTap: () {
@@ -118,7 +123,8 @@ class _HomePageState extends State<HomePage> {
           child: FutureBuilder<Map<String, bool>>(
             future: _progress,
             builder: (context, snapshot) {
-              if (!snapshot.hasData) return const Center(child: CircularProgressIndicator());
+              if (!snapshot.hasData)
+                return const Center(child: CircularProgressIndicator());
 
               final progress = snapshot.data!;
 
@@ -134,12 +140,14 @@ class _HomePageState extends State<HomePage> {
                       ),
                       child: Row(
                         children: [
-                          const Icon(Icons.explore, size: 40, color: Colors.blueAccent),
+                          const Icon(Icons.explore,
+                              size: 40, color: Colors.blueAccent),
                           const SizedBox(width: 12),
                           Expanded(
                             child: Text(
                               'Welcome to the Scavenger Hunt!\nExplore each level and find hidden locations.',
-                              style: TextStyle(fontSize: 16, color: Colors.blueGrey[800]),
+                              style: TextStyle(
+                                  fontSize: 16, color: Colors.blueGrey[800]),
                             ),
                           ),
                         ],
@@ -150,7 +158,10 @@ class _HomePageState extends State<HomePage> {
 
                     const Text(
                       'Explore a Level',
-                      style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
+                      style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
                     ),
                     const SizedBox(height: 8),
 
@@ -162,7 +173,10 @@ class _HomePageState extends State<HomePage> {
 
                     const Text(
                       'Other Resources',
-                      style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
+                      style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
                     ),
                     const SizedBox(height: 8),
 
