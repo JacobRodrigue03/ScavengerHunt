@@ -109,7 +109,17 @@ class _LocationPageState extends State<LocationPage> {
       ],
       [
         "3rd Story - Bayport Technical Center",
-        "",
+        """Behind a glass wall, I stand with pride,
+              A mechanical tube, where fluids glide.
+              On the third floor, I do reside,
+              Where innovation and engineering collide.
+
+              A plaque stands before me, with digits in line,
+              The last four of the phone number, a clue to define.
+              Can you guess what these numbers might be,
+              To unlock the answer and set you free?
+
+              What are the last four digits of the number you'll see?""",
         "1229",
       ]
     ],
