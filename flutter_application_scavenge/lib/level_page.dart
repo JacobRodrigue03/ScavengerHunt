@@ -26,7 +26,12 @@ class LevelPage extends StatelessWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(title: Text('Level $level')),
+      appBar: AppBar(
+        title: Text('Level $level'),
+        backgroundColor: Colors.blueAccent,
+        foregroundColor: Colors.white,
+        elevation: 0,
+      ),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -38,28 +43,69 @@ class LevelPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Explore Level $level',
-                  style: const TextStyle(fontSize: 24)),
+              /// ✅ This is the newly styled text box for "Explore Level $level"
+              Container(
+                padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 32),
+                decoration: BoxDecoration(
+                  color: Colors.black.withOpacity(0.6),  // Semi-transparent black box
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: Text(
+                  'Explore Level $level',
+                  style: const TextStyle(
+                    fontSize: 28,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    letterSpacing: 1.5,
+                    shadows: [
+                      Shadow(
+                        color: Colors.black54,
+                        offset: Offset(2, 2),
+                        blurRadius: 4,
+                      ),
+                    ],
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              /// ✅ Location 1 Button
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (_) =>
-                            LocationPage(level: level, locationNumber: 1)),
+                      builder: (_) => LocationPage(level: level, locationNumber: 1),
+                    ),
                   );
                 },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blueAccent,
+                  foregroundColor: Colors.white,
+                  minimumSize: const Size(180, 50),
+                ),
                 child: const Text('Location 1'),
               ),
+
+              const SizedBox(height: 12),
+
+              /// ✅ Location 2 Button
               ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (_) =>
-                            LocationPage(level: level, locationNumber: 2)),
+                      builder: (_) => LocationPage(level: level, locationNumber: 2),
+                    ),
                   );
                 },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blueAccent,
+                  foregroundColor: Colors.white,
+                  minimumSize: const Size(180, 50),
+                ),
                 child: const Text('Location 2'),
               ),
             ],

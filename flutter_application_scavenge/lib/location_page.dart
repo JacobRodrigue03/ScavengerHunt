@@ -212,7 +212,10 @@ class _LocationPageState extends State<LocationPage> {
           content: Text(funFact),
           actions: [
             TextButton(
-                onPressed: () => Navigator.pop(context),
+                onPressed: () {
+                  Navigator.pop(context);
+                 Navigator.pop(context);
+                },
                 child: const Text('OK'))
           ],
         ),
@@ -239,7 +242,7 @@ class _LocationPageState extends State<LocationPage> {
                 controller: _controller,
                 decoration: const InputDecoration(
                   border: OutlineInputBorder(),
-                  hintText: 'button text',
+                  hintText: '',
                 ),
               ),
               const SizedBox(height: 16),
